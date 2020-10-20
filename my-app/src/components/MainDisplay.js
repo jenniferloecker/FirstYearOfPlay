@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { fetchTeams } from "../redux/actions/actions";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import TeamLineChart from "./TeamLineChart";
 
 const MainDisplay = ({ fetchTeams, data }) => {
   const { teams } = data;
@@ -9,16 +10,7 @@ const MainDisplay = ({ fetchTeams, data }) => {
     fetchTeams();
   });
 
-  return (
-    teams.length > 0 &&
-    teams.map((team, i) => {
-      return (
-        <div key={i}>
-          <b>Team</b> - {team.name_display_full} - {team.first_year_of_play}
-        </div>
-      );
-    })
-  );
+  return <TeamLineChart data={teams} />;
 };
 
 const structuredSelector = createStructuredSelector({

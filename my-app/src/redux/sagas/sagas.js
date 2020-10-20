@@ -1,7 +1,7 @@
 import { call, put, takeLatest, all } from "redux-saga/effects";
 import { Teams } from "../constants";
 import { TeamAPI } from "../api/API";
-import { fetchTeams, fetchTeamsSuccess } from "../actions/actions";
+import { fetchTeamsSuccess } from "../actions/actions";
 
 const teamAPI = new TeamAPI();
 
@@ -14,7 +14,13 @@ function* getTeamsFromAPI(action) {
     // call the api
     const data = yield call(teamAPI.fetchTeams, { response: action.payload });
     const teamData = data.team_all_season.queryResults.row;
-    yield put(fetchTeamsSuccess(teamData));
+    const chartData = teamData.map((team) => {
+      return {
+        name: team.name,
+        year: team.first_year_of_play,
+      };
+    });
+    yield put(fetchTeamsSuccess(chartData));
   } catch (e) {
     console.log(e);
   }
