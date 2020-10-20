@@ -11,7 +11,7 @@ function TeamInfo({ team }) {
   );
 }
 
-TeamInfo.team = {
+TeamInfo.propTypes = {
   team: PropTypes.object.isRequired,
 };
 

@@ -6,6 +6,7 @@ import TeamLineChart from "./TeamLineChart";
 import ChartSelect from "./ChartSelect";
 import TeamBarChart from "./TeamBarChart";
 import TeamInfo from "./TeamInfo";
+import PropTypes from "prop-types";
 
 const MainDisplay = ({ fetchTeams, data }) => {
   const { teams } = data;
@@ -45,6 +46,11 @@ const MainDisplay = ({ fetchTeams, data }) => {
 const structuredSelector = createStructuredSelector({
   data: (state) => state.teams,
 });
+
+MainDisplay.propTypes = {
+  fetchTeams: PropTypes.func.isRequired,
+  data: PropTypes.number.isRequired,
+};
 
 const mapDispatchToProps = { fetchTeams };
 export default connect(structuredSelector, mapDispatchToProps)(MainDisplay);

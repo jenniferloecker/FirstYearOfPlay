@@ -35,6 +35,7 @@ const TeamLineChart = ({ data, onClick }) => {
 
 TeamLineChart.propTypes = {
   data: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default TeamLineChart;
