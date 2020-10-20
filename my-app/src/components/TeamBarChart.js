@@ -1,10 +1,10 @@
 import React from "react";
-import { LineChart, Line, YAxis, XAxis, Tooltip } from "recharts";
+import { BarChart, Bar, YAxis, XAxis, Tooltip } from "recharts";
 import PropTypes from "prop-types";
 
-const TeamLineChart = ({ data }) => {
+const TeamBarChart = ({ data }) => {
   return (
-    <LineChart width={1000} height={500} data={data}>
+    <BarChart width={1000} height={500} data={data}>
       <XAxis
         dataKey="name"
         interval={0}
@@ -17,13 +17,13 @@ const TeamLineChart = ({ data }) => {
         label={{ value: "Year", position: "insideLeft", angle: -90 }}
       />
       <Tooltip />
-      <Line type="monotone" dataKey="year" interval={0} stroke="blue" />
-    </LineChart>
+      <Bar dataKey="year" fill="#8884d8" />
+    </BarChart>
   );
 };
 
-TeamLineChart.propTypes = {
+TeamBarChart.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default TeamLineChart;
+export default TeamBarChart;
