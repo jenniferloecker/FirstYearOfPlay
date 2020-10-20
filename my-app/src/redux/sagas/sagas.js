@@ -18,6 +18,7 @@ function* getTeamsFromAPI(action) {
       return {
         name: team.name,
         year: team.first_year_of_play,
+        league: team.league,
       };
     });
     yield put(fetchTeamsSuccess(chartData));

@@ -1,10 +1,20 @@
 import React from "react";
-import { LineChart, Line, YAxis, XAxis, Tooltip } from "recharts";
+import {
+  LineChart,
+  Line,
+  YAxis,
+  XAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 import PropTypes from "prop-types";
 
-const TeamLineChart = ({ data }) => {
+const TeamLineChart = ({ data, onClick }) => {
+  const handleClick = (event) => {
+    onClick(event.activePayload[0].payload);
+  };
   return (
-    <LineChart width={1000} height={500} data={data}>
+    <LineChart width={1000} height={450} data={data} onClick={handleClick}>
       <XAxis
         dataKey="name"
         interval={0}
@@ -17,6 +27,7 @@ const TeamLineChart = ({ data }) => {
         label={{ value: "Year", position: "insideLeft", angle: -90 }}
       />
       <Tooltip />
+      <CartesianGrid />
       <Line type="monotone" dataKey="year" interval={0} stroke="blue" />
     </LineChart>
   );
